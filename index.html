@@ -339,10 +339,13 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
     var w=window.innerWidth,h=window.innerHeight,landscape=w>h,compact=landscape&&w<1600;
     root.classList.toggle('lscape-compact',compact);
     var hero=document.querySelector('.hero-inner'),hdr=document.querySelector('header');
-    if(hero)hero.style.paddingTop=(compact&&hdr)?(hdr.offsetHeight+1)+'px':'';
+    if(hero)hero.style.paddingTop=(compact&&hdr)?(hdr.offsetHeight+3)+'px':'';
     if(dbg)dbg.textContent=w+'×'+h+(landscape?' L':' P')+' h'+(hdr?hdr.offsetHeight:'?');
   }
   addEventListener('resize',apply);addEventListener('orientationchange',apply);apply();
+  requestAnimationFrame(apply);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(apply);
+  setTimeout(apply,300);setTimeout(apply,900);
 })();
 </script>
 <script>
