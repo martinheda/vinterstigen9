@@ -103,6 +103,24 @@ nav a:hover::after,nav a.active::after{width:100%}
   .lede-2{margin-top:.3rem}
   .cta-row{margin-top:1.3rem}
   .hero .btn-blue{font-size:.92rem;padding:.85rem 2.6rem}}
+/* iPad-liggande styrs egentligen av JavaScript-klassen nedan (CSS-mediefrågan ovan
+   matchar inte i Safaris skrivbordsläge). JS mäter menyns nederkant + sätter marginal. */
+html.lscape-compact header .bar{flex-direction:column!important;align-items:center!important;
+  padding:.16rem 0!important;gap:.1rem!important}
+html.lscape-compact .brand-logo{height:24px!important}
+html.lscape-compact .menu-btn{display:none!important}
+html.lscape-compact nav{position:static!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  justify-content:center!important;background:none!important;box-shadow:none!important;
+  padding:0!important;gap:1.1rem!important}
+html.lscape-compact nav a{font-size:.84rem!important}
+html.lscape-compact .hero-logo{width:min(480px,42%)!important}
+html.lscape-compact .hero .eyebrow{font-size:.78rem!important}
+html.lscape-compact .lede{font-size:1.05rem!important;margin-top:.6rem!important}
+html.lscape-compact .lede-2{margin-top:.3rem!important}
+html.lscape-compact .cta-row{margin-top:1.3rem!important}
+html.lscape-compact .hero .btn-blue{font-size:.92rem!important;padding:.85rem 2.6rem!important}
+#dbg{position:fixed;left:8px;bottom:8px;z-index:200;background:#c0392b;color:#fff;
+  font:bold 15px/1.4 monospace;padding:6px 12px;border-radius:6px;pointer-events:none}
 .hero .eyebrow{color:var(--gold-bright);font-size:.86rem;letter-spacing:.26em}
 .hero h1.hero-brand{margin:.6rem 0 0;line-height:1}
 .hero-logo{width:min(1000px,96%);height:auto;display:block;margin-inline:auto;
@@ -311,6 +329,31 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
   <div class="copybar">Copyright © All Rights Reserved<button class="theme-toggle" id="themeBtn">tema</button></div>
 </footer>
 
+<div id="dbg"></div>
+<script>
+(function(){
+  var root=document.documentElement, dbg=document.getElementById('dbg');
+  function apply(){
+    var w=window.innerWidth,h=window.innerHeight,landscape=w>h,compact=landscape&&w<1600;
+    root.classList.toggle('lscape-compact',compact);
+    var hero=document.querySelector('.hero-inner'),nav=document.querySelector('nav'),
+        hdr=document.querySelector('header');
+    if(hero){
+      if(compact&&nav&&hdr){
+        var mb=nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top;
+        hero.style.setProperty('padding-top',(Math.round(mb)+4)+'px','important');
+      } else hero.style.removeProperty('padding-top');
+    }
+    if(dbg){var nb=(nav&&hdr)?Math.round(nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top):0;
+      var pt=hero?Math.round(parseFloat(getComputedStyle(hero).paddingTop)):0;
+      dbg.textContent=w+'×'+h+(landscape?' L':' P')+' meny'+nb+' topp'+pt;}
+  }
+  addEventListener('resize',apply);addEventListener('orientationchange',apply);apply();
+  requestAnimationFrame(apply);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(apply);
+  setTimeout(apply,400);setTimeout(apply,1000);
+})();
+</script>
 <script>
 const header=document.getElementById('site-header');
 const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>40);
