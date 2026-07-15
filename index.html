@@ -119,8 +119,6 @@ html.lscape-compact .lede{font-size:1.05rem!important;margin-top:.6rem!important
 html.lscape-compact .lede-2{margin-top:.3rem!important}
 html.lscape-compact .cta-row{margin-top:1.3rem!important}
 html.lscape-compact .hero .btn-blue{font-size:.92rem!important;padding:.85rem 2.6rem!important}
-#dbg{position:fixed;left:8px;bottom:8px;z-index:200;background:#c0392b;color:#fff;
-  font:bold 15px/1.4 monospace;padding:6px 12px;border-radius:6px;pointer-events:none}
 .hero .eyebrow{color:var(--gold-bright);font-size:.86rem;letter-spacing:.26em}
 .hero h1.hero-brand{margin:.6rem 0 0;line-height:1}
 .hero-logo{width:min(1000px,96%);height:auto;display:block;margin-inline:auto;
@@ -329,10 +327,10 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
   <div class="copybar">Copyright © All Rights Reserved<button class="theme-toggle" id="themeBtn">tema</button></div>
 </footer>
 
-<div id="dbg"></div>
 <script>
 (function(){
-  var root=document.documentElement, dbg=document.getElementById('dbg');
+  var root=document.documentElement;
+  // iPad i liggande läge: kompakt header + dra upp hero-innehållet tätt under menyn
   function apply(){
     var w=window.innerWidth,h=window.innerHeight,landscape=w>h,compact=landscape&&w<1600;
     root.classList.toggle('lscape-compact',compact);
@@ -344,9 +342,6 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
         hero.style.setProperty('padding-top',(Math.round(mb)-55)+'px','important');
       } else hero.style.removeProperty('padding-top');
     }
-    if(dbg){var nb=(nav&&hdr)?Math.round(nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top):0;
-      var pt=hero?Math.round(parseFloat(getComputedStyle(hero).paddingTop)):0;
-      dbg.textContent=w+'×'+h+(landscape?' L':' P')+' meny'+nb+' topp'+pt;}
   }
   addEventListener('resize',apply);addEventListener('orientationchange',apply);apply();
   requestAnimationFrame(apply);
