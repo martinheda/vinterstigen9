@@ -341,7 +341,7 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
     if(hero){
       if(compact&&nav&&hdr){
         var mb=nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top;
-        hero.style.setProperty('padding-top',(Math.round(mb)-50)+'px','important');
+        hero.style.setProperty('padding-top',(Math.round(mb)-75)+'px','important');
       } else hero.style.removeProperty('padding-top');
     }
     if(dbg){var nb=(nav&&hdr)?Math.round(nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top):0;
