@@ -84,10 +84,12 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
   width:min(1500px,98vw)}
 .bk-h2{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,2.6vw,1.9rem);
   margin:0 0 .3rem}
-.bk-cols{display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;
+.bk-cols{display:flex;flex-direction:row;align-items:flex-end;flex-wrap:wrap;
   gap:clamp(1.4rem,4vw,3.5rem);width:100%}
 .bk-weeks{order:-1;flex:1 1 300px;max-width:380px}
 .bk-process{flex:1 1 330px;max-width:600px}
+/* iPad och smalare: topplinjera kolumnerna. PC (>1400px): bottenlinjera (default ovan) */
+@media(max-width:1400px){.bk-cols{align-items:flex-start}}
 @media(max-width:560px){.bk{display:block;min-height:0}
   .bk-cols{flex-direction:column;align-items:flex-start;gap:2.4rem}}
 .wk-list{list-style:none;padding:0;margin:1.2rem 0 0;display:flex;flex-direction:column;
