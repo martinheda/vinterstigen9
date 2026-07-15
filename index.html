@@ -88,15 +88,16 @@ nav a:hover::after,nav a.active::after{width:100%}
   nav{gap:1.6rem}
   nav a{font-size:.9rem}
   .hero-inner{padding-top:4.8rem}}
-/* iPad i liggande läge: mindre logga + text, uppflyttat. Bredd-baserad regel
-   (1000–1400px liggande) eftersom aspect-ratio blir opålitlig med Safaris verktygsfält. */
-@media (orientation:landscape) and (min-width:1000px) and (max-width:1400px){
+/* iPad i liggande läge: mindre logga + text, uppflyttat. Bred regel som träffar
+   allt smalare än 1400px i liggande (fångar iPad oavsett rapporterad bredd),
+   men rör inte den stora skrivbordsskärmen (>1400px). */
+@media (orientation:landscape) and (max-width:1400px){
   header .bar{padding:.3rem 0 .25rem;gap:.2rem}
   .brand-logo{height:38px}
   nav{gap:1.6rem}
   nav a{font-size:.9rem}
-  .hero-inner{padding-top:4.8rem}
-  .hero-logo{width:min(560px,46%)}
+  .hero-inner{padding-top:4.6rem}
+  .hero-logo{width:min(480px,42%)}
   .hero .eyebrow{font-size:.76rem}
   .lede{font-size:1.05rem;margin-top:.6rem}
   .lede-2{margin-top:.3rem}
