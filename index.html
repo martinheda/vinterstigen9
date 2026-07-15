@@ -105,15 +105,14 @@ nav a:hover::after,nav a.active::after{width:100%}
   .hero .btn-blue{font-size:.92rem;padding:.85rem 2.6rem}}
 /* JS-styrd kompaktklass (sätts av script utifrån verklig skärmstorlek – funkar
    även när iPad-Safari kör skrivbordsläge och ignorerar mediefrågor) */
-html.lscape-compact header .bar{padding:.3rem 0 .25rem!important}
-html.lscape-compact .brand-logo{height:24px!important}
-html.lscape-compact .menu-btn{display:block!important;top:.35rem!important}
-html.lscape-compact nav{display:none!important;position:absolute;top:100%;left:0;right:0;
-  flex-direction:column;background:#33251a;padding:1.1rem 0;gap:1.1rem;align-items:center;
-  box-shadow:0 14px 26px rgba(0,0,0,.4)}
-html.lscape-compact header.menu-open nav{display:flex!important}
-html.lscape-compact nav a{font-size:1.05rem!important;text-shadow:none}
-html.lscape-compact .hero-inner{padding-top:2.3rem!important}
+html.lscape-compact header .bar{flex-direction:row!important;justify-content:space-between!important;
+  align-items:center!important;padding:.2rem 0!important;gap:1rem!important}
+html.lscape-compact .brand-logo{height:22px!important}
+html.lscape-compact .menu-btn{display:none!important}
+html.lscape-compact nav{position:static!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  background:none!important;box-shadow:none!important;padding:0!important;gap:1rem!important}
+html.lscape-compact nav a{font-size:.8rem!important}
+html.lscape-compact .hero-inner{padding-top:2rem!important}
 html.lscape-compact .hero-logo{width:min(480px,42%)!important}
 html.lscape-compact .hero .eyebrow{font-size:.76rem!important}
 html.lscape-compact .lede{font-size:1.05rem!important;margin-top:.6rem!important}
