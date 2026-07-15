@@ -106,8 +106,8 @@ nav a:hover::after,nav a.active::after{width:100%}
 /* iPad-liggande styrs egentligen av JavaScript-klassen nedan (CSS-mediefrågan ovan
    matchar inte i Safaris skrivbordsläge). JS mäter menyns nederkant + sätter marginal. */
 html.lscape-compact header .bar{flex-direction:column!important;align-items:center!important;
-  padding:.08rem 0!important;gap:.05rem!important}
-html.lscape-compact .brand-logo{height:15px!important}
+  padding:.18rem 0!important;gap:.1rem!important}
+html.lscape-compact .brand-logo{height:30px!important}
 html.lscape-compact .menu-btn{display:none!important}
 html.lscape-compact nav{position:static!important;flex-direction:row!important;flex-wrap:nowrap!important;
   justify-content:center!important;background:none!important;box-shadow:none!important;
@@ -341,7 +341,7 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
     if(hero){
       if(compact&&nav&&hdr){
         var mb=nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top;
-        hero.style.setProperty('padding-top',(Math.round(mb)+2)+'px','important');
+        hero.style.setProperty('padding-top',(Math.round(mb)-6)+'px','important');
       } else hero.style.removeProperty('padding-top');
     }
     if(dbg){var nb=(nav&&hdr)?Math.round(nav.getBoundingClientRect().bottom-hdr.getBoundingClientRect().top):0;
