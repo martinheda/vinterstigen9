@@ -113,8 +113,8 @@ html.lscape-compact nav{position:static!important;flex-direction:row!important;f
   justify-content:center!important;background:none!important;box-shadow:none!important;
   padding:0!important;gap:1.2rem!important}
 html.lscape-compact nav a{font-size:.85rem!important}
-/* fallback – JS sätter exakt värde utifrån uppmätt headerhöjd */
-html.lscape-compact .hero-inner{padding-top:2.4rem!important}
+/* fallback (utan !important så JS-inline-värdet vinner och styr exakt) */
+html.lscape-compact .hero-inner{padding-top:2.4rem}
 html.lscape-compact .hero-logo{width:min(480px,42%)!important}
 html.lscape-compact .hero .eyebrow{font-size:.76rem!important}
 html.lscape-compact .lede{font-size:1.05rem!important;margin-top:.6rem!important}
