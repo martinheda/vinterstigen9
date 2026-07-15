@@ -88,6 +88,19 @@ nav a:hover::after,nav a.active::after{width:100%}
   nav{gap:1.6rem}
   nav a{font-size:.9rem}
   .hero-inner{padding-top:4.8rem}}
+/* iPad/telefon i liggande läge (bred men låg): mindre logga + text, uppflyttat */
+@media (pointer:coarse) and (orientation:landscape){
+  header .bar{padding:.3rem 0 .25rem;gap:.2rem}
+  .brand-logo{height:38px}
+  nav{gap:1.6rem}
+  nav a{font-size:.9rem}
+  .hero-inner{padding-top:4.8rem}
+  .hero-logo{width:min(560px,46%)}
+  .hero .eyebrow{font-size:.76rem}
+  .lede{font-size:1.05rem;margin-top:.6rem}
+  .lede-2{margin-top:.3rem}
+  .cta-row{margin-top:1.3rem}
+  .hero .btn-blue{font-size:.92rem;padding:.85rem 2.6rem}}
 .hero .eyebrow{color:var(--gold-bright);font-size:.86rem;letter-spacing:.26em}
 .hero h1.hero-brand{margin:.6rem 0 0;line-height:1}
 .hero-logo{width:min(1000px,96%);height:auto;display:block;margin-inline:auto;
