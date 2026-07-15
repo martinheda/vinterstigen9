@@ -106,14 +106,15 @@ nav a:hover::after,nav a.active::after{width:100%}
 /* JS-styrd kompaktklass (sätts av script utifrån verklig skärmstorlek – funkar
    även när iPad-Safari kör skrivbordsläge och ignorerar mediefrågor) */
 html.lscape-compact header .bar{flex-direction:column!important;align-items:center!important;
-  padding:.18rem 0!important;gap:.1rem!important}
-html.lscape-compact .brand-logo{height:20px!important}
+  padding:.22rem 0!important;gap:.15rem!important}
+html.lscape-compact .brand-logo{height:28px!important}
 html.lscape-compact .menu-btn{display:none!important}
 html.lscape-compact nav{position:static!important;flex-direction:row!important;flex-wrap:nowrap!important;
   justify-content:center!important;background:none!important;box-shadow:none!important;
-  padding:0!important;gap:.9rem!important}
-html.lscape-compact nav a{font-size:.76rem!important}
-html.lscape-compact .hero-inner{padding-top:3.1rem!important}
+  padding:0!important;gap:1.2rem!important}
+html.lscape-compact nav a{font-size:.92rem!important}
+/* fallback – JS sätter exakt värde utifrån uppmätt headerhöjd */
+html.lscape-compact .hero-inner{padding-top:2.4rem!important}
 html.lscape-compact .hero-logo{width:min(480px,42%)!important}
 html.lscape-compact .hero .eyebrow{font-size:.76rem!important}
 html.lscape-compact .lede{font-size:1.05rem!important;margin-top:.6rem!important}
@@ -335,9 +336,11 @@ footer{background:linear-gradient(180deg,#33251a 0%,#7d6b54 50%,#f4f2ee 100%);
 (function(){
   var root=document.documentElement, dbg=document.getElementById('dbg');
   function apply(){
-    var w=window.innerWidth,h=window.innerHeight,landscape=w>h;
-    root.classList.toggle('lscape-compact',landscape&&w<1600);
-    if(dbg)dbg.textContent=w+'×'+h+(landscape?' L':' P');
+    var w=window.innerWidth,h=window.innerHeight,landscape=w>h,compact=landscape&&w<1600;
+    root.classList.toggle('lscape-compact',compact);
+    var hero=document.querySelector('.hero-inner'),hdr=document.querySelector('header');
+    if(hero)hero.style.paddingTop=(compact&&hdr)?(hdr.offsetHeight+8)+'px':'';
+    if(dbg)dbg.textContent=w+'×'+h+(landscape?' L':' P')+' h'+(hdr?hdr.offsetHeight:'?');
   }
   addEventListener('resize',apply);addEventListener('orientationchange',apply);apply();
 })();
